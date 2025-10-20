@@ -1,4 +1,7 @@
 let apiKey = "7K26VXR2V2A5L6A5KKMD42T4X";
+const locationInput = document.querySelector("#location");
+const unitGroupSwitchBtn = document.querySelector(".unitGroupSwitch");
+const weatherForm = document.querySelector(".weatherForm");
 
 async function getWeather(location, unitGroup) {
     let locationData;
@@ -30,4 +33,9 @@ function processLocationData(jsonResponse){
     return weatherDetails;
 }
 
-getWeather("london", "C");
+weatherForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let inputLocation = locationInput.value;
+    let currentUnit = unitGroupSwitchBtn.value;
+    getWeather(inputLocation, currentUnit);
+})
