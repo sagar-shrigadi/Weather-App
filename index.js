@@ -18,7 +18,7 @@ async function getWeather(location, unitGroup) {
     addToDom(locationWeatherDetails);
 
     // console.log(locationWeatherDetails);
-    // console.log(responseJson);
+    console.log(responseJson);
 }
 
 function processLocationData(jsonResponse){
@@ -43,6 +43,7 @@ weatherForm.addEventListener("submit", (e) => {
 })
 
 function addToDom(processedJson){
+    weatherDetailsContainer.innerHTML = "";
     let container = document.createElement("div");
 
     let cityName = document.createElement("h2");
@@ -58,21 +59,21 @@ function addToDom(processedJson){
     let currentFeelsLike = document.createElement("p");
 
     let currentHumidity = document.createElement("p");
-    currentHumidity.textContent = `${processedJson.humidity} %`;
+    currentHumidity.textContent = `Humidity: ${processedJson.humidity} %`;
 
     let currentVisibility = document.createElement("p");
     let currentWindSpeed = document.createElement("p");
 
     if(unitGroupSwitchBtn.value === "C"){
-        currentTemp.textContent = `${processedJson.temp} °C`;
-        currentFeelsLike.textContent = `${processedJson.feelsLike} °C`;
-        currentVisibility.textContent = `${processedJson.visibility} km`;
-        currentWindSpeed.textContent = `${processedJson.windSpeed} km`;
+        currentTemp.textContent = `Temp: ${processedJson.temp} °C`;
+        currentFeelsLike.textContent = `Feels Like: ${processedJson.feelsLike} °C`;
+        currentVisibility.textContent = `Visibility: ${processedJson.visibility} km`;
+        currentWindSpeed.textContent = `Wind Speed: ${processedJson.windSpeed} km`;
     }else {
-        currentTemp.textContent = `${processedJson.temp} °F`;
-        currentFeelsLike.textContent = `${processedJson.feelsLike} °F`;
-        currentVisibility.textContent = `${processedJson.visibility} mi`;
-        currentWindSpeed.textContent = `${processedJson.windSpeed} mph`;
+        currentTemp.textContent = `Temp: ${processedJson.temp} °F`;
+        currentFeelsLike.textContent = `Feels Like: ${processedJson.feelsLike} °F`;
+        currentVisibility.textContent = `Visibility: ${processedJson.visibility} mi`;
+        currentWindSpeed.textContent = `Wind Speed: ${processedJson.windSpeed} mph`;
     }
 
     container.append(cityName, currentDate, currentCondition, currentTemp, currentFeelsLike, currentHumidity, currentVisibility, currentWindSpeed);
