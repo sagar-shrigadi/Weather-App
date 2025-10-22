@@ -78,3 +78,13 @@ function addToDom(processedJson){
     container.append(cityName, currentDate, currentCondition, currentTemp, currentFeelsLike, currentHumidity, currentVisibility, currentWindSpeed);
     weatherDetailsContainer.appendChild(container);
 }
+
+unitGroupSwitchBtn.addEventListener("click", ()=>{
+    if(unitGroupSwitchBtn.value === "C"){
+        unitGroupSwitchBtn.setAttribute("value", "F");
+        unitGroupSwitchBtn.textContent = "°F";
+    }else{
+        unitGroupSwitchBtn.setAttribute("value", "C");
+        unitGroupSwitchBtn.textContent = "°C";
+    }
+})
