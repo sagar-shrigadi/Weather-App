@@ -18,7 +18,7 @@ async function getWeather(location, unitGroup) {
     addToDom(locationWeatherDetails);
 
     // console.log(locationWeatherDetails);
-    console.log(responseJson);
+    // console.log(responseJson);
 }
 
 function processLocationData(jsonResponse){
@@ -47,7 +47,10 @@ function addToDom(processedJson){
     let container = document.createElement("div");
 
     let cityName = document.createElement("h2");
-    cityName.textContent = locationInput.value;
+    let locationName = locationInput.value;
+    let locationNameFirstLetter = locationName.at(0).toUpperCase();
+    let locationNameRest = locationName.slice(1, locationName.length).toLowerCase();
+    cityName.textContent = `${locationNameFirstLetter}${locationNameRest}`;
 
     let currentDate = document.createElement("p");
     currentDate.textContent = processedJson.dateTime;
