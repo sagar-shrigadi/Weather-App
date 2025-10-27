@@ -45,6 +45,9 @@ weatherForm.addEventListener("submit", (e) => {
 function addToDom(processedJson){
     weatherDetailsContainer.innerHTML = "";
     let container = document.createElement("div");
+    container.classList.add("weatherDetailsContainer");
+    let moreDetails = document.createElement("div");
+    moreDetails.classList.add("moreDetailsContainer"); 
 
     let cityName = document.createElement("h2");
     let locationName = locationInput.value;
@@ -56,6 +59,7 @@ function addToDom(processedJson){
     currentDate.textContent = processedJson.dateTime;
 
     let currentCondition = document.createElement("p");
+    currentCondition.classList.add("currentCondition");
     currentCondition.textContent = processedJson.condition;
 
     let currentTemp = document.createElement("p");
@@ -79,7 +83,8 @@ function addToDom(processedJson){
         currentWindSpeed.textContent = `Wind Speed: ${processedJson.windSpeed} mph`;
     }
 
-    container.append(cityName, currentDate, currentCondition, currentTemp, currentFeelsLike, currentHumidity, currentVisibility, currentWindSpeed);
+    moreDetails.append(currentTemp, currentFeelsLike, currentHumidity, currentVisibility, currentWindSpeed);
+    container.append(cityName, currentDate, currentCondition, moreDetails);
     weatherDetailsContainer.appendChild(container);
 }
 
