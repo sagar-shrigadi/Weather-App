@@ -96,11 +96,17 @@ h1{
 }
 
 main{
-  min-height: 75dvh;
+  min-height: 77.3dvh;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
+}
+
+@media (max-width: 48em) {
+  main {
+    min-height: 75dvh;
+  }
 }
 
 .starting_desc{
